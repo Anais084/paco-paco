@@ -48,8 +48,8 @@ body > div {
 
 /* Walls are blue with an off-blue border. */
 .wall {
-  background-image: url("https://i.postimg.cc/brx5ZWXw/Arbre-pixe-lise.png");
-  border: 2px solid cornflowerblue;
+  background-image: url("https://i.postimg.cc/ZKr4ZVVf/Webp-net-resizeimage.jpg");
+  border: 2px solid green;
 }
 
 /* Coins are made by rounding the corners and  */
