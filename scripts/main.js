@@ -18,7 +18,6 @@ let gameData = [
   [1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 1, 1, 2, 1],
   [1, 2, 2, 2, 1, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-
 ];
 
 // Specifically, a wall is represented by the number 1,
@@ -47,7 +46,6 @@ let pacman = {
   y: 11,
   direction: 'right'
 };
-
 
 //-------------------------------------------------------------
 // Game map creation functions
@@ -87,7 +85,6 @@ function createTiles(data) {
         // For Pacman, we will add yet another
         // class for the direction pacman is facing.
         tile.classList.add(pacman.direction);
-
       }
 
       // Now that our individual tile is configured,
@@ -136,6 +133,11 @@ function eraseMap() {
 // - if we didn't hit a wall, set pacman's old location to empty space
 // - update pacman's location
 // - draw pacman in the new location
+
+let character = fetch('http://easteregg.wildcodeschool.fr/api/characters/')
+.then(data => data.json())
+.
+
 
 function moveDown() {
   pacman.direction = 'down';
