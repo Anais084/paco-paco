@@ -17,7 +17,7 @@ html {
 /* We want the page to be black and our game board centered. */
 /*-----------------------------------------------------------*/
 body {
-  background-color: grey;
+  background-color: black;
 }
 
 body > div {

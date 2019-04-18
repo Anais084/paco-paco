@@ -9,18 +9,15 @@ let gameData = [
   [1,2,2,2,1,1,1,2,2,2,2,2,2,2,2,1],
   [1,2,1,2,2,2,2,2,1,1,1,2,1,1,2,1],
   [1,2,1,2,1,1,2,2,2,2,1,2,1,1,2,1],
-  [1,2,1,2,1,1,5,1,2,2,2,2,2,2,2,1],
+  [1,2,1,2,1,1,2,1,2,2,2,2,2,2,2,1],
   [1,2,1,2,2,2,2,1,2,2,1,2,1,1,2,1],
   [1,2,1,1,1,1,1,1,2,1,1,2,1,1,2,1],
   [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
   [1,2,1,2,1,1,2,1,1,2,1,1,1,1,2,1],
   [1,2,1,2,1,1,2,2,2,2,2,2,2,2,2,1],
   [1,2,1,2,2,2,2,1,2,1,2,1,1,1,2,1],
-  [1,2,2,2,1,2,2,2,2,2,2,2,2,2,2,1],
+  [1,2,2,2,1,2,5,2,2,2,2,2,2,2,2,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  
-  
-
   
 ];
 
@@ -47,7 +44,7 @@ let map;
 // And, we will keep track of what direction she is facing.
 let pacman = {
   x: 6,
-  y: 4,
+  y: 11,
   direction: 'right'
 };
 
@@ -142,16 +139,16 @@ function eraseMap() {
 
 function moveDown() {
   pacman.direction = 'down';
-  if (gameData[pacman.y+1][pacman.x] !== WALL) {
+ while (gameData[pacman.y+1][pacman.x] !== WALL){
     gameData[pacman.y][pacman.x] = GROUND;
     pacman.y = pacman.y + 1 ;
     gameData[pacman.y][pacman.x] = PACMAN;
   }
-}
+ }
 
 function moveUp() {
   pacman.direction = 'up';
-  if (gameData[pacman.y-1][pacman.x] !== WALL) {
+  while (gameData[pacman.y-1][pacman.x] !== WALL){
     gameData[pacman.y][pacman.x] = GROUND;
     pacman.y = pacman.y - 1;
     gameData[pacman.y][pacman.x] = PACMAN;
@@ -160,7 +157,7 @@ function moveUp() {
 
 function moveLeft() {
   pacman.direction = 'left';
-  if (gameData[pacman.y][pacman.x-1] !== WALL) {
+  while(gameData[pacman.y][pacman.x-1] !== WALL){
     gameData[pacman.y][pacman.x] = GROUND;
     pacman.x = pacman.x - 1 ;
     gameData[pacman.y][pacman.x] = PACMAN;
@@ -169,7 +166,7 @@ function moveLeft() {
 
 function moveRight() {
   pacman.direction = 'right';
-  if (gameData[pacman.y][pacman.x+1] !== WALL) {
+  while(gameData[pacman.y][pacman.x+1] !== WALL ){
     gameData[pacman.y][pacman.x] = GROUND;
     pacman.x = pacman.x + 1 ;
     gameData[pacman.y][pacman.x] = PACMAN;
