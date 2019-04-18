@@ -5,20 +5,20 @@
 // This is a numerical representation of the pacman game.
 // It uses numbers to represent walls, coins, empty space, and pacman.
 let gameData = [
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  [1,2,2,2,1,1,1,2,2,2,2,2,2,2,2,1],
-  [1,2,1,2,2,2,2,2,1,1,1,2,1,1,2,1],
-  [1,2,1,2,1,1,2,2,2,2,1,2,1,1,2,1],
-  [1,2,1,2,1,1,2,1,2,2,2,2,2,2,2,1],
-  [1,2,1,2,2,2,2,1,2,2,1,2,1,1,2,1],
-  [1,2,1,1,1,1,1,1,2,1,1,2,1,1,2,1],
-  [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1],
-  [1,2,1,2,1,1,2,1,1,2,1,1,1,1,2,1],
-  [1,2,1,2,1,1,2,2,2,2,2,2,2,2,2,1],
-  [1,2,1,2,2,2,2,1,2,1,2,1,1,1,2,1],
-  [1,2,2,2,1,2,5,2,2,2,2,2,2,2,2,1],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2, 1, 1, 2, 1],
+  [1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 2, 1],
+  [1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1, 2, 1],
+  [1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1],
+  [1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 1, 1, 2, 1],
+  [1, 2, 2, 2, 1, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+
 ];
 
 // Specifically, a wall is represented by the number 1,
@@ -28,8 +28,8 @@ let gameData = [
 
 // In our code below, we want to be able to refer to names of things,
 // and not numbers. To make that possible, we set up a few labels.
-const WALL   = 1;
-const COIN   = 2;
+const WALL = 1;
+const COIN = 2;
 const GROUND = 3;
 const PACMAN = 5;
 
@@ -139,16 +139,17 @@ function eraseMap() {
 
 function moveDown() {
   pacman.direction = 'down';
- while (gameData[pacman.y+1][pacman.x] !== WALL){
+  while (gameData[pacman.y + 1][pacman.x] !== WALL) {
     gameData[pacman.y][pacman.x] = GROUND;
-    pacman.y = pacman.y + 1 ;
+    pacman.y = pacman.y + 1;
     gameData[pacman.y][pacman.x] = PACMAN;
+    
   }
- }
+}
 
 function moveUp() {
   pacman.direction = 'up';
-  while (gameData[pacman.y-1][pacman.x] !== WALL){
+  while (gameData[pacman.y - 1][pacman.x] !== WALL) {
     gameData[pacman.y][pacman.x] = GROUND;
     pacman.y = pacman.y - 1;
     gameData[pacman.y][pacman.x] = PACMAN;
@@ -157,18 +158,18 @@ function moveUp() {
 
 function moveLeft() {
   pacman.direction = 'left';
-  while(gameData[pacman.y][pacman.x-1] !== WALL){
+  while (gameData[pacman.y][pacman.x - 1] !== WALL) {
     gameData[pacman.y][pacman.x] = GROUND;
-    pacman.x = pacman.x - 1 ;
+    pacman.x = pacman.x - 1;
     gameData[pacman.y][pacman.x] = PACMAN;
   }
 }
 
 function moveRight() {
   pacman.direction = 'right';
-  while(gameData[pacman.y][pacman.x+1] !== WALL ){
+  while (gameData[pacman.y][pacman.x + 1] !== WALL) {
     gameData[pacman.y][pacman.x] = GROUND;
-    pacman.x = pacman.x + 1 ;
+    pacman.x = pacman.x + 1;
     gameData[pacman.y][pacman.x] = PACMAN;
   }
 }
@@ -192,10 +193,10 @@ function setupKeyboardControls() {
     } else if (e.keyCode === 38) {  // up arrow is 38
       moveUp();
 
-    } else if (e.keyCode === 39){   // right arrow is 39
+    } else if (e.keyCode === 39) {   // right arrow is 39
       moveRight();
 
-    } else if (e.keyCode === 40){   // down arrow is 40
+    } else if (e.keyCode === 40) {   // down arrow is 40
       moveDown();
     }
 

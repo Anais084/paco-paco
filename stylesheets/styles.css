@@ -20,10 +20,25 @@ body {
   background-color: black;
 }
 
-body > div {
-  margin: 120px auto;
+.console {
   text-align: center;
+  height: 300px;
+  border : solid white;
+  }
+
+body > div {
+  margin: 100px;
+  text-align: center;
+  background-color: black;
 }
+
+h1, p {
+  color: white;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+}
+
+
 
 
 /*-----------------------------------------------------------*/
@@ -55,9 +70,8 @@ body > div {
 /* Coins are made by rounding the corners and  */
 /* making them much smaller than 50px by 50px. */
 .coin {
-  background-color: yellow;
-  border-radius: 50%;
-  transform: scale(0.3);
+  background-image: url('../images/egg.png');
+
 }
 
 
@@ -70,6 +84,11 @@ body > div {
   /* The '../images' means: "go to the parent folder */
   /* then look inside the images folder.             */
   background-image: url('../images/mizpacman.png');
+}
+
+.logo {
+  width: 90px;
+  text-align: left;
 }
 
 .left {
