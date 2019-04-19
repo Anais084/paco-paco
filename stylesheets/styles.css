@@ -39,8 +39,6 @@ h1, p {
 }
 
 
-
-
 /*-----------------------------------------------------------*/
 /* Every game tile should be 50px by 50px and sitting next   */
 /* one another.                                              */
@@ -70,7 +68,7 @@ h1, p {
 /* Coins are made by rounding the corners and  */
 /* making them much smaller than 50px by 50px. */
 .coin {
-  background-image: url('../images/egg.png');
+  background-color:yellow;
 
 }
 
