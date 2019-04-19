@@ -21,14 +21,12 @@ body {
   justify-content: center;
 }
 
-
 .container {
   display: flex;
   flex-direction: wrap;
   text-align: center;
   
 }
-
 
 .console {
   width: 300px;
@@ -55,7 +53,6 @@ h1, p {
   vertical-align: top;
 }
 
-
 /*-----------------------------------------------------------*/
 /* Pacman will encounter walls and coins.                    */
 /* Pacman can't move through walls, but can eat coins.       */
@@ -75,7 +72,6 @@ h1, p {
   transform: scale(0.3);
 }
 
-
 /*-----------------------------------------------------------*/
 /* We make pacman appear to face different directions by     */
 /* using different background images based on class name.    */
@@ -84,7 +80,7 @@ h1, p {
   /* Image urls are relative to the stylesheet.      */
   /* The '../images' means: "go to the parent folder */
   /* then look inside the images folder.             */
-  background-image: url('../images/albert.jpg');
+  background-image: url('../images/Albert.jpg');
 }
 
 .logo {
@@ -92,13 +88,13 @@ h1, p {
 }
 
 .left {
-  background-image: url('../images/albert.jpg');
+  background-image: url('../images/Albert.jpg');
 }
 
 .up {
-  background-image: url('../images/albert.jpg');
+  background-image: url('../images/Albert.jpg');
 }
 
 .down {
-  background-image: url('../images/albert.jpg');
+  background-image: url('../images/Albert.jpg');
 }

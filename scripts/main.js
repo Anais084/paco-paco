@@ -51,7 +51,6 @@ let SCORE = 0;
 
 let usersName = ""
 
-
 fetch('http://easteregg.wildcodeschool.fr/api/characters')
    .then(response => {
        return response.json()
@@ -224,9 +223,32 @@ function moveDown() {
  function printScore (){let result = document.getElementById("Score");
  result.innerHTML = "Score :"+ SCORE}
 
-//This function is for the timer -- to be completed
+// //This function is for the timer 
 
+// document.getElementById("Start").addEventListener('click',() => {
+//   console.log("click")
+//   interval()
+// });
 
+// let decompte = 30
+
+// let interval = setInterval(function Timer() {
+//   if (decompte != 0 ){
+//     decompte -= 1
+//     printTimer()
+//   } else {
+//     return "Game Over";
+//     clearDecompte()
+//     }
+//  },1000);
+
+ 
+// function clearDecompte() {
+//  clearInterval(interval());
+// }  
+
+function printTimer (){let result2 = document.getElementById("Timer")
+result2.innerHTML = "Timer : "+ decompte}
 function printcountdown (){let result = document.getElementById("Timer");
 result.innerHTML = "Timer :"+ countdown()}
 
