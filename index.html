@@ -15,20 +15,20 @@
 </head>
 
 <body>
-
-  <div class="console">
+  <div class="container">
+    <div class="console">
       <img class="logo" src='images/egg.png'>
       <h1>Paco Paco</h1>
-    <p>Choose your character:</p>
-    <img src="images/egg.png">
-    <img src="images/egg.png">
-    <img src="images/egg.png">
-    <img src="images/egg.png">
-    <p>PLAY</p>
+      <p id='playersName'>Get all the eggs before time runs out!</p>
+      <p id="Score">Score : </p>
+      <p id="Timer">Timer : </p>
+    </div>
+    <!-- We leave the body empty, except for the script tag. -->
+    <!-- The script tag loads our JavaScript file. -->
+    <div class="game">
+      <script src="scripts/main.js"></script>
+    </div>
   </div>
-  <!-- We leave the body empty, except for the script tag. -->
-  <!-- The script tag loads our JavaScript file. -->
-  <script class="circuit" src="scripts/main.js"></script>
 
 </body>
 

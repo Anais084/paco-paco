@@ -18,6 +18,22 @@ let gameData = [
   [1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 1, 1, 2, 1],
   [1, 2, 2, 2, 1, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 1],
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+
+];
+let gameScore = [
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2, 1, 1, 2, 1],
+  [1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 2, 1],
+  [1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1, 2, 1],
+  [1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1],
+  [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1],
+  [1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 1, 1, 2, 1],
+  [1, 2, 2, 2, 1, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ];
 
 // Specifically, a wall is represented by the number 1,
@@ -31,7 +47,19 @@ const WALL = 1;
 const COIN = 2;
 const GROUND = 3;
 const PACMAN = 5;
+let SCORE = 0;
 
+let usersName = ""
+
+
+fetch('http://easteregg.wildcodeschool.fr/api/characters')
+   .then(response => {
+       return response.json()
+   })
+   .then(value => {
+
+      printplayersName(value[15].name)
+    });
 
 // We will use the identifier "map" to refer to the game map.
 // We won't assign this until later on, when we generate it
@@ -85,6 +113,7 @@ function createTiles(data) {
         // For Pacman, we will add yet another
         // class for the direction pacman is facing.
         tile.classList.add(pacman.direction);
+
       }
 
       // Now that our individual tile is configured,
@@ -124,7 +153,7 @@ function eraseMap() {
 }
 
 //-------------------------------------------------------------
-// Movement functions
+// Movement functions with Score
 //-------------------------------------------------------------
 
 // Each function does the following:
@@ -134,47 +163,72 @@ function eraseMap() {
 // - update pacman's location
 // - draw pacman in the new location
 
-let character = fetch('http://easteregg.wildcodeschool.fr/api/characters/')
-.then(data => data.json())
-.
-
-
 function moveDown() {
   pacman.direction = 'down';
-  while (gameData[pacman.y + 1][pacman.x] !== WALL) {
+  if (gameData[pacman.y+1][pacman.x] !== WALL) {
     gameData[pacman.y][pacman.x] = GROUND;
-    pacman.y = pacman.y + 1;
+    pacman.y = pacman.y + 1 ;
     gameData[pacman.y][pacman.x] = PACMAN;
-    
   }
-}
-
-function moveUp() {
+  if (gameScore[pacman.y][pacman.x]=== 2){
+  SCORE += 5;
+    gameScore[pacman.y][pacman.x] = 3;
+    printScore()
+  }
+ }
+ 
+ function moveUp() {
   pacman.direction = 'up';
-  while (gameData[pacman.y - 1][pacman.x] !== WALL) {
+  if (gameData[pacman.y-1][pacman.x] !== WALL) {
     gameData[pacman.y][pacman.x] = GROUND;
     pacman.y = pacman.y - 1;
     gameData[pacman.y][pacman.x] = PACMAN;
+    if (gameScore[pacman.y][pacman.x]=== 2){
+    SCORE += 5;
+     gameScore[pacman.y][pacman.x] = 3;
+     printScore()
   }
-}
-
-function moveLeft() {
+  }
+ }
+ 
+ function moveLeft() {
   pacman.direction = 'left';
-  while (gameData[pacman.y][pacman.x - 1] !== WALL) {
+  if (gameData[pacman.y][pacman.x-1] !== WALL) {
     gameData[pacman.y][pacman.x] = GROUND;
-    pacman.x = pacman.x - 1;
+    pacman.x = pacman.x - 1 ;
     gameData[pacman.y][pacman.x] = PACMAN;
   }
-}
-
-function moveRight() {
+  if (gameScore[pacman.y][pacman.x] === 2){
+  SCORE += 5
+    gameScore[pacman.y][pacman.x] = 3;
+    printScore()
+  }
+ }
+ 
+ function moveRight() {
   pacman.direction = 'right';
-  while (gameData[pacman.y][pacman.x + 1] !== WALL) {
-    gameData[pacman.y][pacman.x] = GROUND;
-    pacman.x = pacman.x + 1;
-    gameData[pacman.y][pacman.x] = PACMAN;
+  if (gameData[pacman.y][pacman.x+1] !== WALL) {
+      gameData[pacman.y][pacman.x] = GROUND;
+      pacman.x = pacman.x + 1 ;
+      gameData[pacman.y][pacman.x] = PACMAN;
   }
-}
+  if (gameScore[pacman.y][pacman.x]===2){
+    SCORE += 5;
+    gameScore[pacman.y][pacman.x] = 3;
+    printScore()
+  }
+ }
+ function printplayersName (name){let result3 = document.getElementById("playersName");
+ result3.innerHTML = "Get all the eggs before time runs out " +  name + "!"}
+ 
+ function printScore (){let result = document.getElementById("Score");
+ result.innerHTML = "Score :"+ SCORE}
+
+//This function is for the timer -- to be completed
+
+
+function printcountdown (){let result = document.getElementById("Timer");
+result.innerHTML = "Timer :"+ countdown()}
 
 // This function sets up the listener for the whole page.
 // Specifically, when the user presses a key, we run a function
@@ -216,6 +270,7 @@ function main() {
   // keyboard controls.
   drawMap();
   setupKeyboardControls();
+  
 }
 
 // Finally, after we define all of our functions, we need to start
